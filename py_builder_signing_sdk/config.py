@@ -73,7 +73,7 @@ class BuilderConfig:
             try:
                 token = self.remote_builder_config.token
                 headers = {"Authorization": f"Bearer {token}"} if token else {}
-                return post(url, data=payload, headers=headers)
+                return BuilderHeaderPayload(**post(url, data=payload, headers=headers))
             except Exception as err:
                 print("error calling remote signer:", err)
                 return None
